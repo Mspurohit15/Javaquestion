@@ -1,0 +1,89 @@
+intput = abcba
+output= yes or no
+logic 1:
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        /* Enter your code here. Print output to STDOUT. */
+        int count=0;
+        
+        for(int i=0;i<A.length()/2;i++){
+            if(A.charAt(i)==A.charAt(A.length()-i-1))count++;
+            
+        }
+        System.out.println((count==A.length()/2)?"Yes":"No");
+    }
+}
+
+Logic : 2
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+      System.out.println( A.equals( new StringBuilder(A).reverse().toString()) 
+       ? "Yes" : "No" );
+    // Here is learn about StringBuilder 
+-->hi, if we doesn't add toString() after reverse() program doesn't work properly can you help me why? 
+The reverse() method returns a StringBuilder object, not a String. Since the equals() method expects an Object, 
+the compiler won't complain if you pass a StringBuilder object, but then you're comparing a String object to a 
+StringBuilder object, so they'll never be equal. To illustrate, try using equalsIgnoreCase() which expects a String, 
+so the compiler will complain if you don't add the toString() after reverse()...
+
+    String A="Racecar";
+    System.out.println( A.equalsIgnoreCase(new StringBuilder(A).reverse().toString() ) 
+            ? "Yes" : "No" );
+Output = Yes
+
+    String A="Racecar";
+    System.out.println( A.equalsIgnoreCase(new StringBuilder(A).reverse() ) 
+            ? "Yes" : "No" );
+Output = Compile error!
+
+
+it is not the case.String Objects can also be created by String B = new String(A.reverse()); 
+But this may not work too because String objects are immutable i.e we cannot change its 
+value once created.So we require String Buffer or Builder
+
+Logic : 3
+ System.out.println( A.equals(""+new StringBuilder(A).reverse()) ? "Yes" : "No" );
+ concatenating automatically converts the String builder into String, basically the same operation, just not explicit.
+    }
+    }
+    
+    
+    
+Best solution :
+Most of the solutions posted here do a at least O(N). This isn't necessary, nor is making a reverse copy or char array. My code's preformance is O(N/2)
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        int lengthOfA = A.length()-1;
+        String answer = "Yes";
+        for(int i =0; i<lengthOfA/2; i++){
+            if(A.charAt(i)==A.charAt(lengthOfA-i))
+                continue;
+            else{
+                answer ="No";
+                break;
+            }
+        }
+        System.out.println(answer);
+    }
+}
