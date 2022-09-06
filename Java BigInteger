@@ -1,0 +1,42 @@
+BigInteger class 
+-->. As BigInteger class internally uses an array of integers for processing, the operation on an object of BigInteger are not as fast as on primitives.
+
+What is a BigInteger?
+A BigInteger is a data structure in Java that is used to represent very large numerical values that would otherwise not fit within a 
+primitive data type such as an int or long.
+
+BigInteger provides analogues to all of Java's primitive integer operators, and all relevant methods from java. lang. Math. 
+Additionally, BigInteger provides operations for modular arithmetic, GCD calculation, primality testing, prime generation, bit manipulation,
+and a few other miscellaneous operations.
+
+
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        
+        //Creating a object of BigInteger class to store a result 
+        
+        
+        Scanner s =new Scanner(System.in);
+        String input1=s.next();
+        String input2=s.next();
+        
+        // Coverting a string into BigInteger 
+        
+        BigInteger a =new BigInteger(input1);
+        BigInteger b =new BigInteger(input2);
+        System.out.println(a.add(b));
+        System.out.println(a.multiply(b));
+        
+        
+    }
+}
